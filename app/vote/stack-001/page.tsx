@@ -29,8 +29,8 @@ const STACK_001: Statement[] = [
     vLabelMax: 'High trust',
   },
 ];
+STACK 001 — UPDATED TEST
 
-export default function VoteStack001Page() {
   const statements = useMemo(() => STACK_001, []);
   const [step, setStep] = useState(0);
 
