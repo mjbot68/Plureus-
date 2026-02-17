@@ -34,9 +34,7 @@ export default function VoteStack001Client() {
   const statements = useMemo(() => STACK_001, []);
   const [step, setStep] = useState(0);
 
-  const [answers, setAnswers] = useState(
-    statements.map(() => ({ h: 0, v: 0 }))
-  );
+  const [answers, setAnswers] = useState(statements.map(() => ({ h: 0, v: 0 })));
 
   const current = statements[step];
   const currentAns = answers[step];
@@ -50,12 +48,14 @@ export default function VoteStack001Client() {
     });
   }
 
-  function next() {
+  function nextStep() {
     if (!canProceed) return;
+
     if (step < statements.length - 1) {
       setStep(step + 1);
       return;
     }
+
     alert('Thanks — Stack 001 complete.');
   }
 
@@ -63,18 +63,14 @@ export default function VoteStack001Client() {
     <main className="min-h-screen bg-gray-50 px-4 py-10 flex items-start justify-center">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow p-6">
         <header className="mb-6">
-          <h1 className="text-xl font-semibold text-center">
-            Stack 001 Voting
-          </h1>
+          <h1 className="text-xl font-semibold text-center">Stack 001 Voting</h1>
           <div className="mt-2 text-center text-xs text-gray-500">
             Question {step + 1} of {statements.length}
           </div>
         </header>
 
         <section className="mb-6">
-          <p className="text-gray-900 text-base leading-relaxed">
-            {current.text}
-          </p>
+          <p className="text-gray-900 text-base leading-relaxed">{current.text}</p>
         </section>
 
         <section className="mb-6">
@@ -111,11 +107,9 @@ export default function VoteStack001Client() {
 
         <button
           disabled={!canProceed}
-          onClick={next}
+          onClick={nextStep}
           className={`w-full py-2.5 rounded-lg font-medium ${
-            canProceed
-              ? 'bg-black text-white'
-              : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+            canProceed ? 'bg-black text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'
           }`}
         >
           {step < statements.length - 1 ? 'Next' : 'Submit'}
