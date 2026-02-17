@@ -1,9 +1,10 @@
+'use client';
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-'use client';
-
 import { useMemo, useState } from 'react';
+
 
 type Statement = {
   id: string;
