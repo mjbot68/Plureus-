@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 'use client';
 
 import { useMemo, useState } from 'react';
@@ -29,8 +32,8 @@ const STACK_001: Statement[] = [
     vLabelMax: 'High trust',
   },
 ];
-STACK 001 — UPDATED TEST
 
+export default function VoteStack001Page() {
   const statements = useMemo(() => STACK_001, []);
   const [step, setStep] = useState(0);
 
@@ -41,7 +44,6 @@ STACK 001 — UPDATED TEST
 
   const current = statements[step];
   const currentAns = answers[step];
-
   const canProceed = currentAns.h !== 0 && currentAns.v !== 0;
 
   function update(key: 'h' | 'v', value: number) {
@@ -54,13 +56,13 @@ STACK 001 — UPDATED TEST
 
   function next() {
     if (!canProceed) return;
+
     if (step < statements.length - 1) {
       setStep(step + 1);
       return;
     }
-    // For now: just confirm submission locally.
-    // Later we’ll POST to /api/ballot and show a thank-you screen.
-    alert('Thanks — your responses were recorded locally (MVP).');
+
+    alert('Thanks — Stack 001 complete.');
   }
 
   return (
